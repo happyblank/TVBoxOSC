@@ -83,8 +83,9 @@ public class ApiConfig {
     public void loadConfig(boolean useCache, LoadConfigCallback callback, Activity activity) {
         String apiUrl = Hawk.get(HawkConfig.API_URL, "");
         if (apiUrl.isEmpty()) {
-            callback.error("-1");
-            return;
+            apiUrl = "clan://localhost/share/m.json"
+            //        callback.error("-1");
+           // return;
         }
         File cache = new File(App.getInstance().getFilesDir().getAbsolutePath() + "/" + MD5.encode(apiUrl));
         if (useCache && cache.exists()) {
